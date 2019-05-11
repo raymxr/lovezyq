@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		body{
+			margin: 0;
+			height: 0;
+			font-family: sans-serif;
+			background-image: url('70479666_p0_master1200.jpg');
+			background-size: cover;
+		}
+		#clock-box{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	</style>
+</head>
+<body>
+	<div id="clock-box"> <span></span><font color="#33CC00">我们</font> <span>已经认识……</span>
+    	<div id="clock"></div>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+ <script type="text/javascript" src="jscex.min.js"></script>
+ <script type="text/javascript" src="jscex-parser.js"></script>
+ <script type="text/javascript" src="jscex-jit.js"></script>
+ <script type="text/javascript" src="jscex-builderbase.min.js"></script>
+ <script type="text/javascript" src="jscex-async.min.js"></script>
+ <script type="text/javascript" src="jscex-async-powerpack.min.js"></script>
+ <script type="text/javascript" src="function.js" charset="utf-8"></script>
+	<script>
+		var textAnimate = eval(Jscex.compile("async", function () 
+		{
+		    var together = new Date();
+		    together.setFullYear(2019,4, 2); 			//时间年月日，注意月份是0-11
+		    together.setHours(21);						//小时	
+		    together.setMinutes(12);						//分钟
+		    together.setSeconds(0);						//秒前一位
+		    together.setMilliseconds(0);				//秒第二位
+            $("#clock-box").fadeIn(500);
+            while (true) {
+                timeElapse(together);
+                $await(Jscex.Async.sleep(1000));
+            }
+		}));
+ 
+		textAnimate().start();
+		
+	</script>
+</body>
+</html>
